@@ -1,5 +1,6 @@
 >**ES6**  
 ---
+
 - [1. 语言标准](#1-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86)
 - [2. let const](#2-let-const)
 - [3. 解构赋值](#3-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC)
@@ -17,6 +18,8 @@
 - [15. Map](#15-map)
 - [16. 数学新增](#16-%E6%95%B0%E5%AD%A6%E6%96%B0%E5%A2%9E)
 - [17. 命名捕获](#17-%E5%91%BD%E5%90%8D%E6%8D%95%E8%8E%B7)
+- [18. Proxy](#18-proxy)
+
 ---
 # 1. 语言标准  
 ECMAScript 262  
@@ -793,4 +796,104 @@ console.log(str);
 之前 `.` 在正则里表示匹配任意东西， 但是不包括 \n 
 ```js	
 let reg = /\w+/gims;  
+```  
+# 18. Proxy  
+
+Proxy是设计模式的一种，代理模式  
+预警，上报，扩展功能，统计，增强对象等  
+```js  
+new Proxy(target, handler);
+let obj = new Proxy(被代理的对象， 对代理的对象做什么操作)  
 ```
+handler: 
+```js 
+{
+  set(){}, // 设置的时候干的事情
+  get(target, property){}, // 获取干的事情
+  deleteProperty(){}, // 删除
+  has(){}, // 问你有没有这个东西 'xxx' in obj
+  apply() // 调用函数处理
+  //......
+}
+```  
+```js  
+let obj = {
+  name: 'lsa'
+};  
+let newObj = new Proxy(obj, {
+  get(target, property){
+    console.log(`访问了${property}属性`); // 访问了name属性
+    return target[property];
+  }
+});
+console.log(newObj.name); // lsa
+```  
+当属性不在对象上，抛出指定错误
+```js 
+let obj = {
+  name: 'lsa'
+};  
+let newObj = new Proxy(obj, {
+  get(target, property){
+    if (property in target) {
+      return target[property]
+    } else {
+      throw new ReferenceError(`${property}属性不在此对象上`)
+    }
+  }
+});
+console.log(newObj.name); // lsa
+console.log(newObj.age); // ReferenceError: age属性不在此对象上
+``` 
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    const DOM = new Proxy({}, {
+      get(target, property) {
+        return function (attr = {}, ...children) {
+          console.log(attr, children)
+          const el = document.createElement(property);
+
+          // 添加属性
+          for (const key of Object.keys(attr)) {
+            el.setAttribute(key, attr[key]);
+          }
+          //添加子元素
+          for (let child of children) {
+            if (typeof child == 'string') {
+              child = document.createTextNode(child);
+            }
+            el.appendChild(child);
+          }
+          return el;
+        }
+      }
+    });
+
+    let oDiv = DOM.div(
+      { id: 'div1', class: 'aaa' }, '我是div', '-<呵呵呵>', DOM.br({}),
+      DOM.a({ href: '#' }, '一个a标签'),
+      DOM.ul({},
+        DOM.li({}, '1111'),
+        DOM.li({}, '2222'),
+        DOM.li({}, '3333'),
+        DOM.li({}, '4444')
+      )
+    );
+
+    window.onload = function () {
+      document.body.appendChild(oDiv);
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>
+```  
+![18.1](img/18.1.png "18.1")
