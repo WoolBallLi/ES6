@@ -15,6 +15,8 @@
 - [13. generator & async & await](#13-generator--async--await)
 - [14. Set](#14-set)
 - [15. Map](#15-map)
+- [16. 数学新增](#16-%E6%95%B0%E5%AD%A6%E6%96%B0%E5%A2%9E)
+- [17. 命名捕获](#17-%E5%91%BD%E5%90%8D%E6%8D%95%E8%8E%B7)
 ---
 # 1. 语言标准  
 ECMAScript 262  
@@ -159,7 +161,7 @@ console.log(json2); // { a: 1 }
 ```
 # 7. 数组  
 **ES5新增的**
-> arr.forEach( ) 代替普通for
+> arr.forEach( ) 代替普通for 没有返回值
 
 其实可以接收两个参数`arr.forEach/map(回调函数, this指向谁)`  
 使用箭头函数，无法改变this指向
@@ -716,4 +718,79 @@ for (let [k, v] of map.entries()) { }
 map.forEach((value, key) => {
   console.log(value, key);
 })
+```  
+# 16. 数学新增  
+二进制: (Binary) `let a = 0b010101`;  
+
+八进制: (Octal) `let a = 0o666`;  
+
+十六进制: #ccc  
+
+`Number.isNaN(NaN)` -> true
+
+`Number.isFinite(a)` 判断是不是数字	√
+
+`Number.isInteger(a)` 判断数字是不是整数	√  
+
+安全整数: `-(2^53-1) 到 (2^53-1),   包含-(2^53-1) 和(2^53-1)`
+
+`Number.isSafeInteger(a);`
+
+`Number.MAX_SAFE_INTEGER`	最大安全整数
+`Number.MIN_SAFE_INTEGER`	最小安全整数  
+
+`Math.trunc()`	截取，只保留整数部分
+`Math.trunc(4.5)`  ->  4
+`Math.trunc(4.9)`  ->  4
+
+`Math.sign(-5)`   判断一个数到底是正数、负数、0  
+
+`Math.sign(-5)`  ->  -1  
+`Math.sign(5)`  -> 1  
+`Math.sign(0)`	->  0  
+`Math.sign(-0)`	->  -0  
+其他值，返回 NaN
+	
+`Math.cbrt()`	计算一个数立方根  
+`Math.cbrt(27)`  ->  3  
+# 17. 命名捕获  
+
+>命名捕获语法: (?<名字>)
+```js
+let str = '2018-03-20';
+let reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+let {year, month ,day} = str.match(reg).groups;
+console.log(year, month, day);  
+```
+>反向引用: \1  \2     $1  $2  
+>反向引用命名捕获: 语法:  \k<名字>
+```js
+let reg = /^(?<Strive>welcome)-\k<Strive>$/;
+
+// 匹配: ‘welcome-welcome’
+
+let reg = /^(?<Strive>welcome)-\k<Strive>-\1$/;
+
+// 匹配: 'welcome-welcome-welcome'
+```
+>替换: $<名字>
+```js
+let reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+str = str.replace(reg,'$<day>/$<month>/$<year>');
+console.log(str);
+
+str = str.replace(reg, (...args)=>{
+  //console.log(args)
+  let {year, month, day} = args[args.length-1];
+
+  return `${day}/${month}/${year}`;
+});
+
+console.log(str);  
+```  
+>dotAll 模式	s
+
+之前 `.` 在正则里表示匹配任意东西， 但是不包括 \n 
+```js	
+let reg = /\w+/gims;  
 ```
