@@ -1,27 +1,31 @@
 >**ES6**  
 ---
+# 1. 目录
 
-- [1. 语言标准](#1-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86)
-- [2. let const](#2-let-const)
-- [3. 解构赋值](#3-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC)
-- [4. 字符串相关](#4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3)
-- [5. 函数](#5-%E5%87%BD%E6%95%B0)
-- [6. 扩展运算符、Rest运算符](#6-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6rest%E8%BF%90%E7%AE%97%E7%AC%A6)
-- [7. 数组](#7-%E6%95%B0%E7%BB%84)
-- [8. 对象语法](#8-%E5%AF%B9%E8%B1%A1%E8%AF%AD%E6%B3%95)
-- [9. Promise](#9-promise)
-- [10. 模块化](#10-%E6%A8%A1%E5%9D%97%E5%8C%96)
-- [11. 类](#11-%E7%B1%BB)
-- [12. Symbol](#12-symbol)
-- [13. generator & async & await](#13-generator--async--await)
-- [14. Set](#14-set)
-- [15. Map](#15-map)
-- [16. 数学新增](#16-%E6%95%B0%E5%AD%A6%E6%96%B0%E5%A2%9E)
-- [17. 命名捕获](#17-%E5%91%BD%E5%90%8D%E6%8D%95%E8%8E%B7)
-- [18. Proxy](#18-proxy)
+- [1. 目录](#1-%E7%9B%AE%E5%BD%95)
+- [2. 语言标准](#2-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86)
+- [3. let const](#3-let-const)
+- [4. 解构赋值](#4-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC)
+- [5. 字符串相关](#5-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3)
+- [6. 函数](#6-%E5%87%BD%E6%95%B0)
+- [7. 扩展运算符、Rest运算符](#7-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6rest%E8%BF%90%E7%AE%97%E7%AC%A6)
+- [8. 数组](#8-%E6%95%B0%E7%BB%84)
+- [9. 对象语法](#9-%E5%AF%B9%E8%B1%A1%E8%AF%AD%E6%B3%95)
+- [10. Promise](#10-promise)
+- [11. 模块化](#11-%E6%A8%A1%E5%9D%97%E5%8C%96)
+- [12. 类](#12-%E7%B1%BB)
+- [13. Symbol](#13-symbol)
+- [14. generator & async & await](#14-generator--async--await)
+- [15. Set](#15-set)
+- [16. Map](#16-map)
+- [17. 数学新增](#17-%E6%95%B0%E5%AD%A6%E6%96%B0%E5%A2%9E)
+- [18. 命名捕获](#18-%E5%91%BD%E5%90%8D%E6%8D%95%E8%8E%B7)
+- [19. Proxy](#19-proxy)
 
 ---
-# 1. 语言标准  
+# 2. 语言标准  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
+   
 ECMAScript 262  
 任何人都可以向标准委员会（TC39），要求更改语言标准。  
 提案变成标准，经历5个阶段。  
@@ -34,7 +38,8 @@ ECMAScript 262
  | stage3 | 候选阶段         |
  | stage4 | 定案阶段（标准） |
 
-# 2. let const  
+# 3. let const  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 ```js  
 let a = 1;
 function fn(){
@@ -64,7 +69,8 @@ arr.push('3');
 console.log(arr); //['1','2','3']
 ```
 **Object.freeze(对象) 冻结对象**  
-# 3. 解构赋值  
+# 4. 解构赋值  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 解构赋值左右两边保持一致  
 ```js  
 let [a, b, c] = [1, 2, 3];
@@ -96,7 +102,8 @@ function getPos() {
 let {left, top: t} = getPos();
 console.log(left, t); //10, 20
 ```  
-# 4. 字符串相关  
+# 5. 字符串相关  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 ```js  
 let str = `abc${d}ef`;
 str.includes('a'); //true
@@ -118,7 +125,8 @@ str.includes('a'); //true
 '12'.padStart(10, 'YYYY-MM-DD') // "YYYY-MM-12"
 '09-12'.padStart(10, 'YYYY-MM-DD') // "YYYY-09-12"
 ```  
-# 5. 函数  
+# 6. 函数  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 1. 函数加入了默认值参数。  
 2. 函数参数默认已经定义了，不能再使用let， const声明。  
 > 箭头函数  
@@ -128,7 +136,8 @@ str.includes('a'); //true
 3. 箭头函数不能当构造函数  
 4. ES2017 函数参数最后逗号可以有了
 
-# 6. 扩展运算符、Rest运算符  
+# 7. 扩展运算符、Rest运算符  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 > ...  扩展运算符
 ```js
 let arr = ['apple','banner','orange'];  
@@ -162,7 +171,8 @@ delete json2.b;
 console.log(json); // { a: 1, b: 2 }
 console.log(json2); // { a: 1 }
 ```
-# 7. 数组  
+# 8. 数组  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 **ES5新增的**
 > arr.forEach( ) 代替普通for 没有返回值
 
@@ -289,7 +299,8 @@ for (let [key, val] of arr.entries()) {
 
 Array.prototype.includes方法返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似。  
 
-# 8. 对象语法  
+# 9. 对象语法  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 > Object.is(a, b) 比较两个值是否相等  
 
 ```js  
@@ -356,7 +367,8 @@ for (let [key, value] of entries(obj)) {
   console.log([key, value]); // ['a', 1], ['b', 2], ['c', 3]
 }
 ```  
-# 9. Promise  
+# 10. Promise  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 ```js  
 const promise = new Promise(function(resolve, reject) {
   // ... some code
@@ -368,7 +380,8 @@ const promise = new Promise(function(resolve, reject) {
   }
 });
 ```  
-# 10. 模块化  
+# 11. 模块化  
+[返回目录](#1-%E7%9B%AE%E5%BD%95) 
 ```js
 import(specifier)
 ```  
@@ -478,7 +491,8 @@ async function main() {
 main();  
 ```
 
-# 11. 类  
+# 12. 类  
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
 
 JavaScript 语言中，生成实例对象的传统方法是通过构造函数。下面是一个例子。
 ```js
@@ -519,13 +533,16 @@ p2[age](); // 年龄：99
 p2.showNameshowAge(); // 名字为：lee；年龄：99
 p2[name + age](); // 名字为：lee；年龄：99
 ```  
-# 12. Symbol
+# 13. Symbol
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
+
 ES6 引入了一种新的原始数据类型`Symbol`，表示独一无二的值。它是 `JavaScript` 语言的第七种数据类型，前六种是：`undefined、null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）`。  
 1. Symbol 不能new  
 2. Symbol() 返回是一个唯一值 坊间传说, 做一个key，定义一些唯一或者私有一些东西  
 3. symbol是一个单独数据类型，就叫 symbol, 基本类型  
 4. 如果symbol作为key，用for in循环，出不来  
-# 13. generator & async & await  
+# 14. generator & async & await  
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
 
 > generator函数 生成器  
 
@@ -632,7 +649,9 @@ async function fn(){
 }
 fn();
 ```  
-# 14. Set
+# 15. Set
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
+
 > set  
 
 ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。  
@@ -690,7 +709,9 @@ let set = new Set([1, 2, 3]);
 set = new Set(Array.from(set, val => val * 2));
 // set的值是2, 4, 6
 ```  
-# 15. Map  
+# 16. Map  
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
+
 Map类似 `JSON`, 但是`JSON`的键(key)只能是字符串
 > Map的key可以是任意类型
 
@@ -722,7 +743,9 @@ map.forEach((value, key) => {
   console.log(value, key);
 })
 ```  
-# 16. 数学新增  
+# 17. 数学新增  
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
+
 二进制: (Binary) `let a = 0b010101`;  
 
 八进制: (Octal) `let a = 0o666`;  
@@ -756,7 +779,8 @@ map.forEach((value, key) => {
 	
 `Math.cbrt()`	计算一个数立方根  
 `Math.cbrt(27)`  ->  3  
-# 17. 命名捕获  
+# 18. 命名捕获  
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
 
 >命名捕获语法: (?<名字>)
 ```js
@@ -797,7 +821,8 @@ console.log(str);
 ```js	
 let reg = /\w+/gims;  
 ```  
-# 18. Proxy  
+# 19. Proxy  
+[返回目录](#1-%E7%9B%AE%E5%BD%95)  
 
 Proxy是设计模式的一种，代理模式  
 预警，上报，扩展功能，统计，增强对象等  
