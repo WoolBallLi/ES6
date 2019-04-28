@@ -1,4 +1,8 @@
 >**ES6**  
+
+>[ES6经典入门到进阶](https://ke.qq.com/course/274758)
+
+>[ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 ---
 # 1. 目录
 
@@ -173,6 +177,7 @@ console.log(json2); // { a: 1 }
 ```
 # 8. 数组  
 [返回目录](#1-%E7%9B%AE%E5%BD%95) 
+
 **ES5新增的**
 > arr.forEach( ) 代替普通for 没有返回值
 
@@ -921,4 +926,5 @@ console.log(newObj.age); // ReferenceError: age属性不在此对象上
 </body>
 </html>
 ```  
-![18.1](img/18.1.png "18.1")
+![18.1](img/18.1.png "18.1")  
+
